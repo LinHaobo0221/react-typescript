@@ -1,20 +1,28 @@
 import React, { FC, useEffect, useState } from 'react';
 import { HeaderItem, Table } from '../Table';
 import Row from '../Row';
-import { useKeywordSearch } from '../hooks';
+import { useKeywordSearch, usePagination } from '../hooks';
 
-import { Base } from './styles';
+import { Base, SwitchContainer } from './styles';
 import SearchField from '../SearchField';
 import { Model } from '../model';
 import { Status } from '../enums';
+import SwitchMode from '../SwitchMode';
+import UnitSelect from '../UnitSelect';
+import PaginationBar from '../PaginationBar';
 
 const Page: FC = () => {
   const [testData, setTestData] = useState<Model[]>([]);
 
+  const [mode, setMode] = useState<0 | 1>(1);
+
   const { keyword, onKeyChange, data } = useKeywordSearch(testData);
 
+  const { unit, setUnit, current, setCurrent, total, pagination } =
+    usePagination(testData);
+
   useEffect(() => {
-    const tmpData = Array.from({ length: 200 }).map((_, index) => {
+    const tmpData = Array.from({ length: 21 }).map((_, index) => {
       const div = index % 2;
 
       let status: Status;
@@ -36,7 +44,13 @@ const Page: FC = () => {
 
   return (
     <Base>
-      <SearchField keyword={keyword} onChange={onKeyChange} />
+      <SwitchContainer>
+        <SwitchMode mode={mode} onChangeMode={setMode} />
+
+        {mode === 1 && <UnitSelect unit={unit} onChange={setUnit} />}
+      </SwitchContainer>
+
+      {mode === 0 && <SearchField keyword={keyword} onChange={onKeyChange} />}
 
       <Table
         colgroup={['200px', '300px', '400px']}
@@ -48,10 +62,14 @@ const Page: FC = () => {
           </>
         }
       >
-        {data.map((d, index) => {
+        {(mode === 0 ? data : pagination).map((d, index) => {
           return <Row key={`${index.toString()}`} data={d} />;
         })}
       </Table>
+
+      {mode === 1 && (
+        <PaginationBar total={total} current={current} moveTo={setCurrent} />
+      )}
     </Base>
   );
 };

@@ -57,13 +57,14 @@ export const TableRow = styled.tr`
   &:hover {
     > td,
     > th {
+      transition: background-color 0.2s;
       background-color: #cee0e4;
       cursor: pointer;
     }
   }
 `;
 export const TableColumn = styled.td`
-  padding: 16px 16px 15px;
+  padding: 8px;
   color: #0a2642;
   font-size: 15px;
   border-top: 1px solid transparent;

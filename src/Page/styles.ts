@@ -5,3 +5,8 @@ export const Base = styled.div`
   flex-direction: column;
   gap: 32px;
 `;
+
+export const SwitchContainer = styled(Base)`
+  flex-direction: row;
+  justify-content: space-between;
+`;
