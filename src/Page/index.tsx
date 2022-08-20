@@ -22,7 +22,7 @@ const Page: FC = () => {
     usePagination(testData);
 
   useEffect(() => {
-    const tmpData = Array.from({ length: 21 }).map((_, index) => {
+    const tmpData = Array.from({ length: 51 }).map((_, index) => {
       const div = index % 2;
 
       let status: Status;
