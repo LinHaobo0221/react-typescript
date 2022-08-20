@@ -14,7 +14,7 @@ import PaginationBar from '../PaginationBar';
 const Page: FC = () => {
   const [testData, setTestData] = useState<Model[]>([]);
 
-  const [mode, setMode] = useState<0 | 1>(1);
+  const [mode, setMode] = useState<0 | 1>(0);
 
   const { keyword, onKeyChange, data } = useKeywordSearch(testData);
 
