@@ -25,5 +25,5 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 
-
-Live Demo(仮データ): https://linhaobo-bucket.s3.ap-northeast-1.amazonaws.com/index.html
+### `Live Demo(仮データ)`
+https://linhaobo-bucket.s3.ap-northeast-1.amazonaws.com/index.html
