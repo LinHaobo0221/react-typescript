@@ -1,1 +1,70 @@
-{  "name": "my-app",  "version": "0.1.0",  "private": true,  "dependencies": {    "@testing-library/jest-dom": "^5.16.4",    "@testing-library/react": "^13.3.0",    "@testing-library/user-event": "^13.5.0",    "@types/jest": "^27.5.2",    "@types/node": "^16.11.42",    "@types/react": "^18.0.14",    "@types/react-dom": "^18.0.5",    "react": "^18.2.0",    "react-dom": "^18.2.0",    "react-scripts": "5.0.1",    "styled-components": "^5.3.5",    "timers-browserify": "^2.0.12",    "typescript": "^4.7.4",    "web-vitals": "^2.1.4"  },  "scripts": {    "start": "react-scripts start",    "build": "react-scripts build",    "test": "react-scripts test",    "eject": "react-scripts eject",    "server": "serve -s build -l 4000",    "deploy": "npm run build && aws s3 sync build/ s3://your backet name"  },  "eslintConfig": {    "extends": [      "react-app",      "react-app/jest"    ]  },  "browserslist": {    "production": [      ">0.2%",      "not dead",      "not op_mini all"    ],    "development": [      "last 1 chrome version",      "last 1 firefox version",      "last 1 safari version"    ]  },  "devDependencies": {    "@types/styled-components": "^5.1.26",    "@typescript-eslint/eslint-plugin": "^5.33.1",    "@typescript-eslint/parser": "^5.33.1",    "eslint-config-airbnb": "^19.0.4",    "eslint-config-airbnb-typescript": "^17.0.0",    "eslint-config-prettier": "^8.5.0",    "eslint-plugin-import": "^2.26.0",    "eslint-plugin-jsx-a11y": "^6.6.0",    "eslint-plugin-prettier": "^4.2.1",    "eslint-plugin-react": "^7.30.1",    "eslint-plugin-react-hooks": "^4.6.0",    "prettier": "2.7.1"  },  "resolutions": {    "styled-components": "^5"  }}
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.11.42",
+    "@types/react": "^18.0.14",
+    "@types/react-dom": "^18.0.5",
+    "concurrently": "^7.3.0",
+    "express": "^4.18.1",
+    "mysql": "^2.18.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "styled-components": "^5.3.5",
+    "timers-browserify": "^2.0.12",
+    "typescript": "^4.7.4",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "concurrently \"react-scripts start\" \"npx ts-node ./src/server.ts\"",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "server": "npx ts-node ./src/server.ts",
+    "deploy": "npm run build && aws s3 sync build/ s3://your backet name"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/mysql": "^2.15.21",
+    "@types/styled-components": "^5.1.26",
+    "@typescript-eslint/eslint-plugin": "^5.33.1",
+    "@typescript-eslint/parser": "^5.33.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "2.7.1",
+    "ts-node": "^10.9.1"
+  },
+  "resolutions": {
+    "styled-components": "^5"
+  }
+}

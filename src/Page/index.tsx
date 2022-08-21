@@ -22,24 +22,9 @@ const Page: FC = () => {
     usePagination(testData);
 
   useEffect(() => {
-    const tmpData = Array.from({ length: 51 }).map((_, index) => {
-      const div = index % 2;
-
-      let status: Status;
-      if (div === 0) {
-        status = Status.COMPLETED;
-      } else if (div === 1) {
-        status = Status.PROCESSING;
-      } else {
-        status = Status.CANCELED;
-      }
-      return {
-        id: index + 1,
-        name: `name-${index + 1}`,
-        status,
-      };
-    });
-    setTestData(tmpData);
+    fetch('http://localhost:8080/data')
+      .then((res) => res.json())
+      .then((apiData: Model[]) => setTestData(apiData));
   }, []);
 
   return (
